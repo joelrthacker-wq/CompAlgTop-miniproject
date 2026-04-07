@@ -191,14 +191,12 @@ def filtered_coscythe(K, F_vector_spaces, F_maps, connecting_map, K_minus=None, 
                     tau_minus_modified = K_minus[tau].copy()
                     tau_minus_modified.remove(sigma)
                     for x in tau_minus_modified:
-                        if len(x) == len(c)-1:
-                            queue.append(x)
+                        queue.append(x)
                     # We add tau_minus_modified as an input to ReducePair because we already have it to hand
                     K = ReducePair(tau, sigma, tau_minus_modified)
             sigma_minus = K_minus[sigma]
             for x in sigma_minus:
-                if len(x) == len(c)-1:
-                    queue.append(x)
+                queue.append(x)
     for tau in K:
         for sigma in K_minus[tau]:
             for i in range(1, filtration_length)[::-1]:
@@ -209,8 +207,8 @@ def filtered_coscythe(K, F_vector_spaces, F_maps, connecting_map, K_minus=None, 
 
 
 
-max_dim = 10
-n_points = 10
+max_dim = 5
+n_points = 5
 K, K_minus, K_plus, F_vector_spaces, F_maps, connecting_maps = random_simplicial_complex(n_points = n_points, max_dim = max_dim)
 print('Initial simplicial complex: \n', K, '\n\n\n')
 K, F_vector_spaces, F_maps, connecting_maps, K_minus, K_plus = filtered_coscythe(K, F_vector_spaces, F_maps, connecting_maps)
