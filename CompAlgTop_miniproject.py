@@ -111,13 +111,13 @@ def filtered_coscythe(K, F_vector_spaces, F_maps, connecting_map, K_minus=None, 
     """
     Input:
     K is a list of tuples. It represents a graded poset, where elements of dimension k are tuples of length k, and the order is determined by K_minus and K_plus. If these 
-    are not input, the ordering is assumed to be the face relation.
+    are not input, K is assumed to be a simplicial complex with ordering given by the face relation.
     F_vector_spaces is a list of dictionaries, with F_vector_spaces[i][sigma] = dim(F_{i+1}(sigma))
     F_maps is a list of dictionaries, with F[i][(tau, sigma)] being the matrix of F_{i+1, tau sigma}
     connecting_maps is a list of dictionaries, with connecting_maps[i][sigma] being the matrix of delta_{i+1, sigma}
 
     Output:
-    K backslash Sigma
+    K setminus Sigma
     F_vector_spaces^{Sigma}
     F_maps^{Sigma}
     connecting_maps
@@ -154,7 +154,7 @@ def filtered_coscythe(K, F_vector_spaces, F_maps, connecting_map, K_minus=None, 
 
         return K
     
-    # If K_minus, K_plus are not input, we assume the ordering is given by the face relation and compute K_minus, K_plus
+    # If K_minus, K_plus are not input, we assume K is a simplicial complex and the ordering is given by the face relation and compute K_minus, K_plus
     if K_minus == None and K_plus == None:
         K_minus = {x : [] for x in K}
         K_plus = {x : [] for x in K}
